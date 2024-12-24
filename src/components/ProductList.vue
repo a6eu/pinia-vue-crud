@@ -1,13 +1,13 @@
 <template>
-  <div class="ml-72">
-    <div class="flex w-1/2 justify-between items-center my-9">
+  <div class="flex flex-col">
+    <div class="flex justify-between items-center my-9 w-[500px]">
       <h1 class="text-4xl underline font-serif">Product List</h1>
       <button @click="fetchProducts">
         <img class="w-10" src="../assets/Refresh%20Cw%20Alt%203%20Icon.svg" alt="">
       </button>
     </div>
     <div class="flex gap-5 items-start">
-      <div class="w-1/2">
+      <div class="w-[500px]">
         <ul class="rounded-2xl border overflow-hidden bg-white">
           <li v-if="!loading" class="even:bg-gray-100 h-10 px-2.5 flex items-center justify-between"
               v-for="product in products" :key="product.id">
@@ -57,6 +57,7 @@ export default {
     const fetchProducts = () => store.fetchProducts();
     fetchProducts();
 
+
     const removeProduct = (id) => store.deleteProduct(id);
 
     const addNewProduct = () => {
@@ -95,6 +96,8 @@ export default {
 
     const products = computed(() => store.products);
     const loading = computed(() => store.loading);
+
+    console.log(products)
 
     return {
       fetchProducts,
